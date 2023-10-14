@@ -19,3 +19,6 @@ html {
     margin: 1rem 0;
     font-size: 2.5rem;
   }
+  a  {
+    padding-inline-end: 1rem;
+  }
