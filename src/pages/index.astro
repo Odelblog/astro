@@ -1,4 +1,6 @@
 ---
+import '../styles/global.css';
+import Navigation from '../components/Navigation.astro';
 const pageTitle= "El Ronquillo";
 const identity = {
   firstName: "Sarah",
@@ -8,6 +10,11 @@ const identity = {
 };
 
 const skills = ["HTML", "CSS", "JavaScript", "React", "Astro", "Writing Docs"];
+
+const happy = false;
+const finished = false;
+const goal = 13;
+const skillcolor = "navy";
 ---
 
 <html lang="es">
@@ -16,19 +23,24 @@ const skills = ["HTML", "CSS", "JavaScript", "React", "Astro", "Writing Docs"];
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
+		<style define:vars={{skillcolor}}>
+			  .skill {
+				color: var(--skillcolor);
+				font-weight: bold;
+  				}
+		</style>
 		<title>{pageTitle}</title>
 	</head>
 	<body>
-		<nav>
-			<a href="/">Home</a>
-			<a href="/about/">About</a>
-			<a href="/blog/">Blog</a>
-		</nav>
+		<Navigation />
 		<h1>{pageTitle}</h1>
 		<p>Hola, hoy estamos en {identity.country}</p>
 		<p>My skills are:</p>
 		<ul>
-			{skills.map((skill) => <li>{skill}</li>)}
+			{skills.map((skill) => <li class="skill">{skill}</li>)}
 		</ul>
+		{happy && <p>I am happy to be learning Astro!</p>}
+		{finished && <p>I finished this tutorial!</p>}
+		{goal === 3 ? <p>My goal is to finish in 3 days.</p> : <p>My goal is not 3 days.</p>}
 	</body>
 </html>
