@@ -1,0 +1,44 @@
+---
+import '../styles/global.css';
+import Navigation from '../components/Navigation.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+const { pageTitle } = Astro.props;
+const identity = {
+  firstName: "Sarah",
+  country: "Canada",
+  occupation: "Technical Writer",
+  hobbies: ["photography", "birdwatching", "baseball"],
+};
+
+const skills = ["HTML", "CSS", "JavaScript", "React", "Astro", "Writing Docs"];
+
+const happy = false;
+const finished = false;
+const goal = 13;
+const skillcolor = "navy";
+---
+<html lang="es">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name=description content="ya no hay trilobites en el mar">
+		<meta property="og:image" content="/logo-odelweb-fondoblanco.png">
+		<title>{pageTitle}</title>
+		<meta name="generator" content={Astro.generator} />
+		<style define:vars={{skillcolor}}>
+			  .skill {
+				color: var(--skillcolor);
+				font-weight: bold;
+  				}
+		</style>
+		
+	</head>
+	<body>
+		<Header />
+		<slot />
+		<Footer />
+		
+	</body>
+</html>
